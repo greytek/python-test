@@ -5,11 +5,11 @@ import uuid
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, user_type, password=None, **extra_fields):
+    def create_user(self, email, name, user_type, password=None, **extra_fields):
         if not email:
             raise ValueError('The Email field must be set')
         email = self.normalize_email(email)
-        user = self.model(email=email, user_type=user_type, **extra_fields)
+        user = self.model(email=email, user_type=user_type, name=name, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user

@@ -9,6 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
             'email',
             'password',
             'user_type',
+            'name'
         ]
 
         extra_kwargs = {

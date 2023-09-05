@@ -36,7 +36,8 @@ def user_registration(request):
             email = serializer.validated_data['email']
             user_type = serializer.validated_data['user_type']
             password = serializer.validated_data['password']
-            user = User.objects.create_user(email=email, user_type=user_type, password=password)
+            name = serializer.validated_data['name']
+            user = User.objects.create_user(email=email, name=name, user_type=user_type, password=password)
 
             response = Response({'user_id': user.user_id, 'message': 'User registered successfully.'},
                                 status=status.HTTP_201_CREATED)
